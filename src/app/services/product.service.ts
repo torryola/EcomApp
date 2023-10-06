@@ -8,14 +8,21 @@ import { Observable, map } from 'rxjs';
 })
 export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products';
+  private searchBaseUrl = this.baseUrl+'/search'
 
   constructor(private httpClient: HttpClient) { }
 
   // Get All products
-  getProductList(): Observable<Product[]> {
-   return this.httpClient.get<ServiceResponce>(this.baseUrl).pipe(
+  getProductList(categoryId: number): Observable<Product[]> {
+    const productByCategoryUrl = `${this.searchBaseUrl}/findByCategoryId?id=${categoryId}`;
+   return this.httpClient.get<ServiceResponce>(productByCategoryUrl).pipe(
       map(res => res._embedded.products)
     );
+  }
+
+  searchProduct(searchKey: string): Observable<Product[]> {
+    const searchProductUrl = `${this.searchBaseUrl}/findByDescriptionContaining?key=${searchKey}`
+    return this.httpClient.get<ServiceResponce>(searchProductUrl).pipe(map(res => res._embedded.products))
   }
 }
 

@@ -1,0 +1,10 @@
+  <div class="d-flex justify-content-between mt-5">
+    <a *ngFor="let prodCategory of productCategories$ | async" [routerLink]="['/category/', prodCategory.id]" class="btn btn-outline-dark">{{prodCategory.categoryName}}</a>
+    <!-- <button type="button" class="btn btn-outline-primary">Electronics</button>
+    <button type="button" class="btn btn-outline-secondary">Jewellery</button>
+    <button type="button" class="btn btn-outline-success">Home Appliance</button>
+    <a [routerLink]="['/category/', 1]" class="btn btn-outline-danger">Books</a>
+    <a routerLink="/category/2" class="btn btn-outline-warning">Mugs</a>
+    <button type="button" class="btn btn-outline-info">Luggage</button>
+    <button type="button" class="btn btn-outline-dark">Mouse-Pads</button> -->
+  </div>

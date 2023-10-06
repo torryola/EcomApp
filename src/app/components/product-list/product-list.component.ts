@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -11,14 +13,29 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private productService: ProductService){}
+  private categoryId: number = 1;
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.getListOfProducts();
+
+    this.activatedRoute.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+      {
+        let catId = +params.get('catId')!;
+        this.categoryId = catId >= 1? catId : 1 ;
+        this.getListOfProducts(this.categoryId);
+        return this.products;
+      }
+        )
+    ).subscribe(
+      data => data
+    );
+
+    // this.getListOfProducts();
   }
 
-  getListOfProducts() {
-    this.productService.getProductList().subscribe(
+  getListOfProducts(catId: number) {
+    this.productService.getProductList(catId).subscribe(
       data => this.products = data
     );
   }
