@@ -15,14 +15,28 @@ export class ProductService {
   // Get All products
   getProductList(categoryId: number): Observable<Product[]> {
     const productByCategoryUrl = `${this.searchBaseUrl}/findByCategoryId?id=${categoryId}`;
-   return this.httpClient.get<ServiceResponce>(productByCategoryUrl).pipe(
-      map(res => res._embedded.products)
-    );
+   return this.handleProductGetRequest(productByCategoryUrl);
+  }
+
+
+  getProductById(prodId: number): Observable<Product> {
+   return this.httpClient.get<Product>(`${this.baseUrl}/${prodId}`).pipe(map(
+    response => response
+   ))
   }
 
   searchProduct(searchKey: string): Observable<Product[]> {
     const searchProductUrl = `${this.searchBaseUrl}/findByDescriptionContaining?key=${searchKey}`
-    return this.httpClient.get<ServiceResponce>(searchProductUrl).pipe(map(res => res._embedded.products))
+    return this.handleProductGetRequest(searchProductUrl);
+  }
+
+  private handleProductGetRequest(url: string): Observable<Product[]> {
+    return this.httpClient.get<ServiceResponce>(url).pipe(map(res => {
+      let products = res._embedded.products;
+      // Cache responce locally
+      localStorage.setItem('products', JSON.stringify(products));
+      return products;
+    }))
   }
 }
 

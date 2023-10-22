@@ -8,9 +8,13 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductService } from './services/product.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { MainBannerComponent } from './components/main-banner/main-banner.component';
 
 const routes: Routes = [
 { path: 'category/:catId', component: ProductListComponent },
+{path: 'search/:searchKey', component: ProductListComponent},
+{ path: 'products/details/:id', component: ProductDetailsComponent },
 { path: 'products', component: ProductListComponent },
 { path: '', redirectTo: '/products', pathMatch: 'full'},
 { path: '**', redirectTo: '/products', pathMatch: 'full'}
@@ -20,7 +24,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    ProductDetailsComponent,
+    MainBannerComponent
   ],
   imports: [
     BrowserModule,
