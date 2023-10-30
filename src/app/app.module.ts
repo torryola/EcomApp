@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { MainBannerComponent } from './components/main-banner/main-banner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
 { path: 'category/:catId', component: ProductListComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgbModule
   ],
   exports: [
     RouterModule
