@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(private router: Router){
     // this.isProductDetails = router.url.includes('/products/details/*');
-    console.log(" Is Product Details Url ===== "+ this.router.url.includes('/products/details/*'));
+   // console.log(" Is Product Details Url ===== "+ this.router.url.includes('/products/details/*'));
 
   }
 
