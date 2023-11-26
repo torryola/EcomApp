@@ -10,7 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { MainBannerComponent } from './components/main-banner/main-banner.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartstatusComponent } from './components/cartstatus/cartstatus.component';
 
 const routes: Routes = [
 { path: 'category/:catId', component: ProductListComponent },
@@ -27,14 +28,15 @@ const routes: Routes = [
     ProductListComponent,
     ProductCategoryComponent,
     ProductDetailsComponent,
-    MainBannerComponent
+    MainBannerComponent,
+    CartstatusComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    NgbModule
+    NgbModule, NgbToastModule
   ],
   exports: [
     RouterModule

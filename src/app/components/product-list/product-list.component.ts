@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, map } from 'rxjs';
+import { CartItem } from 'src/app/common/cartItem';
 import { Page } from 'src/app/common/page';
 import { Product } from 'src/app/common/product';
+import { CartServiceService } from 'src/app/services/cart-service.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -24,7 +26,8 @@ export class ProductListComponent implements OnInit {
 
   page!: Page;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private activatedRoute: ActivatedRoute, private cartservice: CartServiceService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.pipe(
@@ -92,6 +95,12 @@ export class ProductListComponent implements OnInit {
     this.getPagebleListOfProducts(this.previousCategory)
   }
 
+  }
+
+  addItemToCart(product:Product) {
+    // console.log(`Product added to Shopping cart ==== ${product.sku}`);
+    // Call a helper method to add it to a cart e.g. CartService
+    this.cartservice.addToCart(new CartItem(product));
   }
 
   updatePageSize(value: string) {

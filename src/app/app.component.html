@@ -30,14 +30,17 @@
             type="search" placeholder="Search" aria-label="Search">
           <button (click)="searchProduct(key.value)" class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <!-- End Search Input -->
         <!-- Basket/ Cart -->
-        <form class="d-flex ms-2">
+        <app-cartstatus></app-cartstatus>
+        <!-- <form class="d-flex ms-2">
           <button class="btn btn-outline-dark" type="submit">
             <i class="bi-cart-fill me-1"></i>
             Cart
             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
           </button>
-        </form>
+        </form> -->
+        <!-- End Basket/ Cart -->
       </div>
     </div>
   </nav>
@@ -54,7 +57,9 @@
       <app-product-category></app-product-category> -->
   <!-- Main Component shows here -->
   <router-outlet></router-outlet>
-
+  <!-- <ngb-toast [autohide]="true">
+    Hello Toast Message
+  </ngb-toast> -->
   <!-- Footer-->
   <footer class="py-5 bg-dark">
     <div class="container">
