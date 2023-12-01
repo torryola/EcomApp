@@ -38,12 +38,10 @@ export class CartServiceService {
     this.catItems.map(item => {
       totalPrice += (item.quantity * item.unitPrice);
       totalQuantity += item.quantity;
-
+    });
       // Publish the total and quantity to subcribed component(s)
       this.totalPricePublisher.next(totalPrice);
       this.totalQuantityPublisher.next(totalQuantity);
-    })
-
     // console.log(`Number of Items in the Cart === ${totalQuantity}  Price = ${totalPrice}`);
   }
 

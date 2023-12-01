@@ -12,8 +12,10 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { MainBannerComponent } from './components/main-banner/main-banner.component';
 import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartstatusComponent } from './components/cartstatus/cartstatus.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 const routes: Routes = [
+  {path: 'shopping-cart', component: CartDetailsComponent},
 { path: 'category/:catId', component: ProductListComponent },
 {path: 'search/:searchKey', component: ProductListComponent},
 { path: 'products/details/:id', component: ProductDetailsComponent },
@@ -29,7 +31,8 @@ const routes: Routes = [
     ProductCategoryComponent,
     ProductDetailsComponent,
     MainBannerComponent,
-    CartstatusComponent
+    CartstatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,

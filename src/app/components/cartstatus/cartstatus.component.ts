@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from 'src/app/services/cart-service.service';
 
 @Component({
@@ -22,9 +22,9 @@ export class CartstatusComponent implements OnInit {
     this.cartService.totalQuantityPublisher.subscribe(value => this.totalQuantity = value);
   }
 
-  ngOnDestroy(): void {
-    this.cartService.totalPricePublisher?.unsubscribe();
-    this.cartService.totalQuantityPublisher?.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.cartService.totalPricePublisher?.unsubscribe();
+  //   this.cartService.totalQuantityPublisher?.unsubscribe();
+  // }
 
 }

@@ -10,13 +10,13 @@
                         <div class="small mb-1">{{productDetails?.sku}}</div>
                         <h1 class="display-5 fw-bolder">{{productDetails?.name}}</h1>
                         <div class="fs-5 mb-5">
-                            <!-- <span class="text-decoration-line-through">{{productDetails!.unitPrice - (productDetails!.unitPrice * 0.2) | currency: 'USD'}}</span> -->
-                            <span>{{productDetails?.unitPrice | currency: 'USD'}}</span>
+                            <!-- <span class="text-decoration-line-through">{{productDetails!.unitPrice - (productDetails!.unitPrice * 0.2) | currency: '£'}}</span> -->
+                            <span>{{productDetails?.unitPrice | currency: '£'}}</span>
                         </div>
                         <p class="lead">{{productDetails?.description}}</p>
                         <div class="d-flex">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button" (click)="addItemToCart(productDetails!)">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
@@ -40,7 +40,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Fancy Product</h5>
                                     <!-- Product price-->
-                                    $40.00 - $80.00
+                                    £40.00 - £80.00
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -69,8 +69,8 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    <span class="text-muted text-decoration-line-through">£20.00</span>
+                                    £18.00
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -91,8 +91,8 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">Sale Item</h5>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    <span class="text-muted text-decoration-line-through">£50.00</span>
+                                    £25.00
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -119,7 +119,7 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    $40.00
+                                    £40.00
                                 </div>
                             </div>
                             <!-- Product actions-->
