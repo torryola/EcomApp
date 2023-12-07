@@ -2,13 +2,14 @@ import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ProductCategory } from '../common/product-category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductCategoryService implements OnInit {
 
-  private categoryBaseUrl = 'http://localhost:8080/api/product-category';
+  private categoryBaseUrl = environment.BASE_URL+'product-category';
   productCategories$?: Observable<ProductCategory[]>;
 
 

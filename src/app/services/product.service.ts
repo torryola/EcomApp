@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Page } from '../common/page';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/products';
+  private baseUrl = environment.BASE_URL+'products';
   private searchBaseUrl = this.baseUrl + '/search'
 
   constructor(private httpClient: HttpClient) { }

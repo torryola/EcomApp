@@ -1,5 +1,12 @@
 <div class="container-fluid">
-  <table class="table table-bordered">
+  <div *ngIf="cartItems.length == 0">
+    <div class="alert alert-warning col-md-12" role="alert">
+      <!-- Add button here to go to product listing page -->
+      <!-- Or add bask image as background here  -->
+      <p style="font-weight: bold;">Empty Cart, go for shopping</p>
+    </div>
+  </div>
+  <table *ngIf="cartItems.length >= 1" class="table table-bordered">
     <thead>
       <tr>
         <th width="20%" scope="Prod Image">Image</th>
